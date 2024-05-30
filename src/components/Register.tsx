@@ -7,9 +7,7 @@ export default function Register() {
 
     return (
         <>
-            <main>
-
-            </main>
+            <h1>registrarse</h1>
         </>
     )
 }
