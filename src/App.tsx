@@ -9,17 +9,19 @@ import { useState } from 'react'
 
 //importando los modules de firebase
 import appFirebase from './credenciales'
-import {getAuth, onAuthStateChanged} from 'firebase/auth'
+import {getAuth, onAuthStateChanged, User} from 'firebase/auth'
 const auth = getAuth(appFirebase)
 
 export default function App() {
 
   const { cart, removeFromCart, decreaseQuantity, increaseQuantity, clearCart, isEmpty, cartTotal } = useCart();
-  const [usuario, setUsuario] = useState(null)
+  const [usuario, setUsuario] = useState<User | null>(null)
 
   onAuthStateChanged(auth, (usuarioFirebase) => {
     if(usuarioFirebase) {
       setUsuario(usuarioFirebase)
+    } else {
+      setUsuario(null)
     }
   })
 
@@ -35,11 +37,12 @@ export default function App() {
         cartTotal={cartTotal}
       />
 
-      <Routes>
-        <Route path="/ecommercecursos/comunidad" element={<Comunidad />} /> 
-        <Route path="/ecommercecursos/register" element={<Register />} /> 
-        <Route path="/ecommercecursos/home" element={<Home />} /> 
-      </Routes>
+      {usuario ? <Routes>
+                      <Route path="/ecommercecursos/comunidad" element={<Comunidad />} /> 
+                      <Route path="/ecommercecursos/register" element={<Register />} /> 
+                      <Route path="/ecommercecursos/home" element={<Home correoUsuario = {usuario.email} />} /> 
+                  </Routes> 
+                : <Register/>}
 
       <footer className="mt-5 py-5">
           <div className="container-xl">

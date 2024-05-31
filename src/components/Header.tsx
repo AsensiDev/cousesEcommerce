@@ -31,13 +31,13 @@ export default function Header({
                     </div>
                     <nav className="col-md-6  d-flex align-items-center justify-content-end gap-4">
                         <div>
-                            <a href="/ecommercecursos/home" className="text-decoration-none text-dark mr-5 fw-bold fs-4">Inicio</a>
+                            <a href="/ecommercecursos/home" className="text-decoration-none text-light mr-5 fw-bold fs-4">Inicio</a>
                         </div>
                         <div>
-                            <a href="/ecommercecursos/comunidad" className="text-decoration-none text-dark mr-5 fw-bold fs-4">Comunidad</a>
+                            <a href="/ecommercecursos/comunidad" className="text-decoration-none text-light mr-5 fw-bold fs-4">Comunidad</a>
                         </div>
                         <div>
-                            <a href="/ecommercecursos/register" className="text-decoration-none text-dark mr-5 fw-bold fs-4">Registrarse</a>
+                            <a href="/ecommercecursos/register" className="text-decoration-none text-light mr-5 fw-bold fs-4">Registrarse</a>
                         </div>
                         <div className="carrito">
                             <img className="img-fluid" src="/img/carrito.png" alt="imagen carrito" />
