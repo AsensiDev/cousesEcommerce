@@ -35,6 +35,7 @@ export default function App() {
         clearCart={clearCart}
         isEmpty={isEmpty}
         cartTotal={cartTotal}
+        isAuthenticated={!!usuario}
       />
 
       {usuario ? <Routes>

@@ -49,7 +49,8 @@ export const useCart = () => {
         setCart(updatedCart)
     }
 
-    function increaseQuantity(id : Curso['id']) {
+    function increaseQuantity(id : Curso['id'], e) {
+        
         const updatedCart = cart.map( item => {
             if(item.id === id && item.quantity < MAX_ITEMS) {
                 return {

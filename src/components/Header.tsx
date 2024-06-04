@@ -1,6 +1,7 @@
 import type { CartItem, Curso } from "../types"
 import React from 'react';
 
+
 type HeaderProps = {
     cart: CartItem[]
     removeFromCart: (id: Curso['id'] ) => void
@@ -9,6 +10,7 @@ type HeaderProps = {
     clearCart: () => void
     isEmpty: boolean
     cartTotal: number
+    isAuthenticated: boolean;
 }
 
 export default function Header({
@@ -18,8 +20,11 @@ export default function Header({
         increaseQuantity, 
         clearCart,
         isEmpty, 
-        cartTotal
+        cartTotal,
+        isAuthenticated
     } : HeaderProps ) {
+
+        const linkClass = `text-decoration-none text-light mr-5 fw-bold fs-4 ${!isAuthenticated ? 'disabled-link' : ''}`;
     return (
         <header className="header">
             <div className="container-xl">
@@ -31,17 +36,17 @@ export default function Header({
                     </div>
                     <nav className="col-md-6  d-flex align-items-center justify-content-end gap-4">
                         <div>
-                            <a href="/ecommercecursos/home" className="text-decoration-none text-light mr-5 fw-bold fs-4">Inicio</a>
+                            <a href="/ecommercecursos/home" className={linkClass}>Inicio</a>
                         </div>
                         <div>
-                            <a href="/ecommercecursos/comunidad" className="text-decoration-none text-light mr-5 fw-bold fs-4">Comunidad</a>
+                            <a href="/ecommercecursos/comunidad" className={linkClass}>Comunidad</a>
                         </div>
                         <div>
-                            <a href="/ecommercecursos/register" className="text-decoration-none text-light mr-5 fw-bold fs-4">Registrarse</a>
+                            <a href="/ecommercecursos/register" className={linkClass}>Registrarse</a>
                         </div>
                         <div className="carrito">
                             <img className="img-fluid" src="/img/carrito.png" alt="imagen carrito" />
-                            <div id="carrito" className="bg-white p-3 mt-2 shadow-lg">
+                            <div id="carrito" className="bg-white p-3 shadow-lg">
                                 {isEmpty ? (
                                     <p className="text-center">El carrito está vacío</p>
                                 ) : (
